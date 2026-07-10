@@ -1,0 +1,12 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Instagram export (source material, not part of the site)
+Instagram.html
+Instagram_files/
+
+# Editor / misc
+*.log
+.vscode/
+.idea/

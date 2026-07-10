@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fine Lines Atelier — Nanobrows, Lip Blushing &amp; Fine Line Tattoos</title>
+<meta name="description" content="Fine Lines Atelier — nanobrows, lip blushing, and fine line tattoos in Birmingham, MI. Delicate, natural, made for you. Book a consultation." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0b0b0c;
+    --ink-soft:#6b6b70;
+    --line:#e7e7e7;
+    --card:#ffffff;
+    --peach1:#d7ac93;
+    --peach2:#eccfb8;
+    --peach3:#c9977c;
+    --radius:30px;
+    --pad:clamp(20px,3.5vw,48px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Poppins',system-ui,sans-serif;
+    color:var(--ink);
+    background:#c4c4c6;
+    background-image:
+      radial-gradient(120% 80% at 15% 0%, rgba(255,255,255,.55), transparent 55%),
+      radial-gradient(120% 90% at 85% 100%, rgba(255,255,255,.35), transparent 50%),
+      linear-gradient(120deg,#cfcfd1 0%,#b9b9bc 30%,#d5d5d7 52%,#adadb1 72%,#cccccf 100%);
+    background-attachment:fixed;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1500px;margin:0 auto;padding:clamp(14px,2vw,26px)}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:6px clamp(6px,1vw,14px) 18px;
+  }
+  .brandmark{display:flex;align-items:center;gap:11px;font-weight:600;letter-spacing:.14em;font-size:12px}
+  .brandmark .glyph{width:22px;height:22px;flex:none}
+  .brandmark small{color:#2c2c2e}
+  .topnav{display:flex;align-items:center;gap:26px;font-size:11px;letter-spacing:.16em;font-weight:500}
+  .topnav a{opacity:.8}
+  .topnav a:hover{opacity:1}
+  .pill{
+    border:1.4px solid rgba(20,20,22,.5);border-radius:100px;
+    padding:9px 20px;font-weight:600;letter-spacing:.14em;font-size:11px;
+    transition:.25s;background:transparent;color:#161618;cursor:pointer;
+  }
+  .pill:hover{background:#141416;color:#fff;border-color:#141416}
+  @media(max-width:720px){.topnav .hide-sm{display:none}}
+
+  /* ---------- hero card ---------- */
+  .card{
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:0 40px 90px -30px rgba(20,20,25,.45);
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:1.05fr 1fr;
+    min-height:min(80vh,860px);
+  }
+  .left{padding:var(--pad);display:flex;flex-direction:column}
+  .wordmark{
+    font-weight:200;line-height:.82;letter-spacing:-.02em;
+    font-size:clamp(64px,12.5vw,190px);
+  }
+  .wordmark .wl{display:block}
+  .wordmark .wl.sub{font-size:.42em;letter-spacing:.05em;font-weight:300;margin-top:.12em}
+  .tagline{
+    max-width:32ch;margin-top:22px;
+    font-weight:600;letter-spacing:.02em;line-height:1.5;
+    font-size:clamp(12px,1.05vw,15px);text-transform:uppercase;
+  }
+  .tagline .mut{color:var(--ink-soft);font-weight:500}
+
+  .styles-list{margin-top:auto;padding-top:38px}
+  .styles-list a{
+    display:flex;align-items:baseline;justify-content:space-between;gap:18px;
+    padding:16px 2px;border-top:1px solid var(--line);
+    font-weight:600;letter-spacing:.04em;font-size:clamp(15px,1.5vw,21px);
+    transition:.25s;
+  }
+  .styles-list a:last-child{border-bottom:1px solid var(--line)}
+  .styles-list a .num{font-size:11px;color:var(--ink-soft);font-weight:500;letter-spacing:.1em}
+  .styles-list a:hover{padding-left:16px;color:#000}
+  .styles-list a:hover .num{color:#000}
+
+  .cta-big{
+    margin-top:34px;display:flex;align-items:center;flex-wrap:wrap;gap:clamp(14px,2vw,34px);
+    cursor:pointer;
+  }
+  .cta-big h2{
+    font-weight:200;letter-spacing:-.01em;line-height:.9;
+    font-size:clamp(44px,7vw,104px);
+  }
+  .cta-tag{font-size:10.5px;letter-spacing:.22em;font-weight:600;white-space:nowrap;color:#141416;
+    border-bottom:1.4px solid #141416;padding-bottom:3px;transition:.25s}
+  .cta-big:hover .cta-tag{letter-spacing:.32em}
+
+  /* ---------- right panel ---------- */
+  .right{
+    position:relative;margin:14px 14px 14px 0;border-radius:calc(var(--radius) - 8px);
+    background:
+      radial-gradient(120% 120% at 75% 20%, rgba(255,255,255,.45), transparent 45%),
+      linear-gradient(150deg,var(--peach3) 0%,var(--peach1) 42%,var(--peach2) 100%);
+    overflow:hidden;display:flex;flex-direction:column;
+    min-height:340px;
+  }
+  .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:0;transition:opacity .45s ease}
+  .scrim{position:absolute;left:0;right:0;z-index:1;pointer-events:none}
+  .scrim-top{top:0;height:130px;background:linear-gradient(to bottom,rgba(28,17,10,.42),transparent)}
+  .scrim-bot{bottom:0;height:180px;background:linear-gradient(to top,rgba(28,17,10,.52),transparent)}
+  .hero-spacer{flex:1}
+  .mininav{
+    position:relative;z-index:2;
+    text-align:center;padding:26px 10px 8px;
+    font-size:11px;letter-spacing:.16em;font-weight:600;line-height:2.2;color:#fff;
+    text-shadow:0 1px 12px rgba(0,0,0,.35);
+  }
+  .mininav a{display:block;opacity:.82;transition:.2s}
+  .mininav a:hover{opacity:1;letter-spacing:.22em}
+  .art-stage{flex:1;display:flex;align-items:center;justify-content:center;padding:6px 8px 4px}
+  .art-stage svg{width:min(78%,360px);height:auto;filter:drop-shadow(0 12px 24px rgba(90,45,20,.18))}
+  .art-stage svg path,.art-stage svg circle,.art-stage svg line{
+    stroke:#2a1c14;fill:none;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:2600;stroke-dashoffset:2600;
+    animation:draw 3.4s ease 1.15s forwards;
+  }
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .thumbs{
+    position:relative;z-index:2;
+    display:flex;gap:10px;justify-content:center;padding:0 14px 20px;
+  }
+  .thumb img{width:100%;height:100%;object-fit:cover;border-radius:10px;display:block}
+  .thumb.active{box-shadow:0 6px 16px rgba(0,0,0,.3)}
+  .thumb{
+    width:58px;height:64px;border-radius:12px;flex:none;cursor:pointer;
+    background:rgba(255,255,255,.35);border:2px solid transparent;
+    display:flex;align-items:center;justify-content:center;transition:.25s;
+    backdrop-filter:blur(2px);
+  }
+  .thumb svg{width:30px;height:34px}
+  .thumb svg path,.thumb svg circle{stroke:#2a1c14;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  .thumb:hover{transform:translateY(-3px)}
+  .thumb.active{border-color:#2a1c14;background:rgba(255,255,255,.6)}
+
+  @media(max-width:880px){
+    .card{grid-template-columns:1fr;min-height:0}
+    .right{margin:0 14px 14px;min-height:420px;order:2}
+    .left{order:1}
+    .styles-list{margin-top:30px}
+  }
+
+  /* ---------- marquee ---------- */
+  .marquee{overflow:hidden;white-space:nowrap;padding:26px 0 10px;
+    font-weight:200;font-size:clamp(28px,5vw,60px);letter-spacing:-.01em;color:#1a1a1c}
+  .marquee div{display:inline-block;animation:scroll 26s linear infinite}
+  .marquee span{padding:0 26px}
+  .marquee .dot{opacity:.4}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ---------- generic section ---------- */
+  section.block{padding:clamp(40px,7vw,110px) 0}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:clamp(30px,5vw,64px)}
+  .eyebrow{font-size:11px;letter-spacing:.24em;font-weight:600;color:#2a2a2c}
+  .section-head h3{font-weight:200;line-height:.95;font-size:clamp(34px,5.5vw,76px);letter-spacing:-.02em;max-width:16ch}
+  .section-head p{max-width:34ch;color:#2c2c2e;font-size:14px;line-height:1.7;font-weight:400}
+
+  /* styles grid */
+  .grid4{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .style-card{background:#fff;border-radius:20px;padding:26px 24px 30px;min-height:280px;
+    display:flex;flex-direction:column;transition:.3s;box-shadow:0 24px 50px -34px rgba(20,20,25,.4)}
+  .style-card:hover{transform:translateY(-6px)}
+  .style-card .ic{width:52px;height:58px;margin-bottom:auto}
+  .style-card .ic path,.style-card .ic circle{stroke:#0b0b0c;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .style-card h4{font-weight:600;letter-spacing:.02em;font-size:18px;margin:26px 0 10px}
+  .style-card p{color:var(--ink-soft);font-size:13px;line-height:1.65}
+  @media(max-width:900px){.grid4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.grid4{grid-template-columns:1fr}}
+
+  /* process */
+  .process{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .step{padding:30px 24px;border-left:1px solid rgba(20,20,25,.16)}
+  .step:first-child{border-left:0;padding-left:0}
+  .step .n{font-weight:200;font-size:clamp(40px,5vw,64px);line-height:1}
+  .step h4{font-weight:600;font-size:16px;margin:16px 0 8px;letter-spacing:.02em}
+  .step p{color:#2c2c2e;font-size:13px;line-height:1.65}
+  @media(max-width:820px){.process{grid-template-columns:repeat(2,1fr)}
+    .step{border-left:0;padding:24px 0;border-top:1px solid rgba(20,20,25,.16)}
+    .step:nth-child(2){padding-left:24px;border-left:1px solid rgba(20,20,25,.16)}
+    .step:nth-child(4){padding-left:24px;border-left:1px solid rgba(20,20,25,.16)}}
+  @media(max-width:520px){.process{grid-template-columns:1fr}
+    .step{padding-left:0!important;border-left:0!important}}
+
+  /* gallery */
+  .gallery{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+  .gtile{aspect-ratio:3/4;border-radius:16px;overflow:hidden;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(150deg,var(--peach1),var(--peach2));transition:.3s}
+  .gtile:nth-child(even){background:linear-gradient(150deg,#e9e9ea,#fafafa)}
+  .gtile:hover{transform:scale(1.03)}
+  .gtile svg{width:56%;height:auto}
+  .gtile svg path,.gtile svg circle{stroke:#241812;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .gtile:nth-child(even) svg path,.gtile:nth-child(even) svg circle{stroke:#0b0b0c}
+  @media(max-width:900px){.gallery{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:520px){.gallery{grid-template-columns:repeat(2,1fr)}}
+
+  /* booking */
+  .book-card{background:#0b0b0c;color:#fff;border-radius:26px;padding:clamp(30px,5vw,64px);
+    display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px)}
+  .book-card h3{font-weight:200;font-size:clamp(38px,5.5vw,74px);line-height:.92;letter-spacing:-.02em}
+  .book-card .lede{color:#b9b9bd;font-size:14px;line-height:1.7;margin-top:22px;max-width:34ch}
+  .book-card .contactline{margin-top:28px;font-size:13px;letter-spacing:.04em;color:#e8e8ea;line-height:2}
+  .book-card .contactline a{border-bottom:1px solid #55555a}
+  form{display:flex;flex-direction:column;gap:14px}
+  .f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  label{font-size:10.5px;letter-spacing:.16em;font-weight:600;color:#8f8f95;display:block;margin-bottom:7px}
+  input,select,textarea{
+    width:100%;background:#141416;border:1px solid #2a2a2e;border-radius:12px;
+    padding:13px 14px;color:#fff;font-family:inherit;font-size:14px;transition:.2s;
+  }
+  input:focus,select:focus,textarea:focus{outline:none;border-color:#fff;background:#1a1a1d}
+  textarea{resize:vertical;min-height:96px}
+  .submit{
+    margin-top:6px;background:#fff;color:#0b0b0c;border:none;border-radius:100px;
+    padding:16px;font-weight:600;letter-spacing:.14em;font-size:12px;cursor:pointer;transition:.25s;font-family:inherit;
+  }
+  .submit:hover{background:var(--peach2)}
+  .cal-wrap{background:#fff;border-radius:16px;overflow:hidden}
+  .formnote{font-size:11px;color:#77777c;line-height:1.6;margin-top:12px;text-align:center}
+  .success{display:none;background:#15251a;border:1px solid #2f5a3d;color:#c9f0d4;
+    border-radius:12px;padding:14px;font-size:13px;line-height:1.6}
+  .success.show{display:block}
+  @media(max-width:820px){.book-card{grid-template-columns:1fr}}
+
+  /* faq */
+  .faq details{border-top:1px solid rgba(20,20,25,.16);padding:20px 2px}
+  .faq details:last-child{border-bottom:1px solid rgba(20,20,25,.16)}
+  .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;
+    font-weight:600;font-size:clamp(15px,1.6vw,19px);letter-spacing:.01em}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .plus{font-weight:200;font-size:28px;line-height:1;transition:.25s}
+  .faq details[open] summary .plus{transform:rotate(45deg)}
+  .faq p{color:#2c2c2e;font-size:14px;line-height:1.7;margin-top:14px;max-width:70ch}
+
+  /* footer */
+  footer{padding:clamp(40px,6vw,90px) 0 40px}
+  .foot-word{font-weight:200;font-size:clamp(52px,15vw,220px);line-height:.8;letter-spacing:-.02em}
+  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-top:40px;
+    font-size:12px;letter-spacing:.06em;color:#1c1c1e}
+  .foot-grid a{border-bottom:1px solid transparent;transition:.2s}
+  .foot-grid a:hover{border-color:#1c1c1e}
+  .foot-col b{display:block;font-weight:600;letter-spacing:.16em;font-size:10.5px;color:#3a3a3c;margin-bottom:10px;text-transform:uppercase}
+  .foot-col div{line-height:2}
+  .copyright{margin-top:40px;font-size:11px;letter-spacing:.1em;color:#404042}
+
+  /* ---------- hero intro animation (matches reference reveal) ---------- */
+  @media (prefers-reduced-motion:no-preference){
+    .topbar{opacity:0;animation:fadeUp .6s ease .05s forwards}
+    .anim-card{opacity:0;transform:scale(.985);transform-origin:center top;
+      animation:cardIn .9s cubic-bezier(.2,.7,.2,1) .15s forwards}
+
+    .wordmark .wl{opacity:0;transform:translateY(28px);filter:blur(6px);
+      animation:wordmarkIn 1s cubic-bezier(.16,1,.3,1) forwards}
+    .wordmark .wl:nth-child(1){animation-delay:.5s}
+    .wordmark .wl:nth-child(2){animation-delay:.66s}
+    .wordmark .wl:nth-child(3){animation-delay:.82s}
+
+    .tagline .w{display:inline-block;opacity:0;transform:translateY(9px);
+      animation:wordIn .5s ease forwards}
+
+    .right{clip-path:inset(0 0 0 100%);
+      animation:wipeIn 1.05s cubic-bezier(.76,0,.24,1) 1.05s forwards}
+
+    .mininav{opacity:0;animation:fadeUp .7s ease 1.55s forwards}
+    .art-stage{opacity:0;animation:fadeUp .7s ease 1.65s forwards}
+    .thumbs{opacity:0;animation:fadeUp .7s ease 2s forwards}
+
+    .styles-list a{opacity:0;transform:translateY(16px);animation:fadeUp .6s ease forwards}
+    .styles-list a:nth-child(1){animation-delay:1.6s}
+    .styles-list a:nth-child(2){animation-delay:1.72s}
+    .styles-list a:nth-child(3){animation-delay:1.84s}
+    .styles-list a:nth-child(4){animation-delay:1.96s}
+
+    .cta-big .cl{opacity:0;transform:translateY(30px);filter:blur(5px);
+      animation:wordmarkIn .85s cubic-bezier(.16,1,.3,1) forwards}
+    .cta-big .cl1{animation-delay:2.1s}
+    .cta-big .cl2{animation-delay:2.24s}
+    .cta-tag{opacity:0;animation:fadeUp .6s ease 2.5s forwards}
+  }
+  @keyframes cardIn{to{opacity:1;transform:scale(1)}}
+  @keyframes wordmarkIn{to{opacity:1;transform:translateY(0);filter:blur(0)}}
+  @keyframes wordIn{to{opacity:1;transform:translateY(0)}}
+  @keyframes wipeIn{to{clip-path:inset(0 0 0 0%)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="brandmark">
+      <svg class="glyph" viewBox="0 0 40 40"><g fill="none" stroke="#141416" stroke-width="2.4" stroke-linecap="round"><path d="M6 30 C 14 6, 26 6, 34 30"/><line x1="10" y1="24" x2="30" y2="24"/></g></svg>
+      <small>FINE&nbsp;LINES&nbsp;ATELIER</small>
+    </div>
+    <nav class="topnav">
+      <a href="#work" class="hide-sm">WORK</a>
+      <a href="#styles" class="hide-sm">STYLES</a>
+      <a href="#process" class="hide-sm">PROCESS</a>
+      <a href="#book" class="pill">BOOK A SESSION</a>
+    </nav>
+  </div>
+
+  <!-- HERO CARD -->
+  <div class="card anim-card">
+    <div class="left">
+      <div class="wordmark"><span class="wl">FINE</span><span class="wl">LINES</span><span class="wl sub">ATELIER</span></div>
+      <div class="tagline">Nanobrows, lip blushing &amp; fine line tattoos — <span class="mut">delicate, natural, and made just for you. Booking now in Birmingham, MI.</span></div>
+
+      <nav class="styles-list" id="styles-quick">
+        <a href="#styles"><span>NANOBROWS</span><span class="num">01</span></a>
+        <a href="#styles"><span>LIP BLUSHING</span><span class="num">02</span></a>
+        <a href="#styles"><span>FINE LINE TATTOOS</span><span class="num">03</span></a>
+      </nav>
+
+      <a class="cta-big" href="#book">
+        <h2 class="cl cl1">BOOK</h2>
+        <span class="cta-tag">[ RESERVE A SESSION ]</span>
+        <h2 class="cl cl2">NOW</h2>
+      </a>
+    </div>
+
+    <div class="right">
+      <img id="heroImg" class="hero-img" src="hero-1.jpg" alt="Fine Lines Atelier artist at work" />
+      <div class="scrim scrim-top"></div>
+      <div class="scrim scrim-bot"></div>
+      <nav class="mininav">
+        <a href="#work">OUR WORK</a>
+        <a href="#about">ABOUT</a>
+        <a href="#process">PROCESS</a>
+        <a href="#book">CONTACT</a>
+      </nav>
+      <div class="hero-spacer"></div>
+      <div class="thumbs" id="thumbs"></div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div id="mq"></div>
+  </div>
+
+  <!-- ABOUT / STATEMENT -->
+  <section class="block" id="about">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">ABOUT THE ATELIER</div>
+        <h3>Quiet lines that stay with you.</h3>
+      </div>
+      <p>A small, appointment-only studio for nanobrows, lip blushing, and fine line tattoos. Every service is tailored to your features and done with a light, precise hand — clean, considered, and made to look natural as it heals.</p>
+    </div>
+  </section>
+
+  <!-- STYLES -->
+  <section class="block" id="styles">
+    <div class="section-head">
+      <div><div class="eyebrow">03 SIGNATURE SERVICES</div><h3>What we do.</h3></div>
+      <p>Book any service below, or bring inspiration and we'll tailor it to your features during a free consult.</p>
+    </div>
+    <div class="grid4" id="styleGrid"></div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="block" id="process">
+    <div class="section-head">
+      <div><div class="eyebrow">HOW IT WORKS</div><h3>From idea to healed.</h3></div>
+      <p>A calm, four-step process. Most first-timers are in and out within the hour.</p>
+    </div>
+    <div class="process">
+      <div class="step"><div class="n">01</div><h4>Consult</h4><p>Share your goal, shape, and color. We talk options, pricing, and exactly what each service involves.</p></div>
+      <div class="step"><div class="n">02</div><h4>Map &amp; design</h4><p>We map your brows, lips, or linework and refine the shape with you before any pigment goes in.</p></div>
+      <div class="step"><div class="n">03</div><h4>Session</h4><p>Single-use needles, sterile studio, unhurried pace. You'll see the linework build slowly and precisely.</p></div>
+      <div class="step"><div class="n">04</div><h4>Aftercare</h4><p>Leave with a printed care guide and a direct line to us for the two weeks of healing.</p></div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="block" id="work">
+    <div class="section-head">
+      <div><div class="eyebrow">SELECTED WORK</div><h3>Recent lines.</h3></div>
+      <p>A glimpse of the motifs clients love most — swap any into the hero above by tapping the thumbnails.</p>
+    </div>
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="block" id="book">
+    <div class="book-card">
+      <div>
+        <h3>Book your session.</h3>
+        <p class="lede">Pick a time below to book your appointment or a free consult — you'll get an instant confirmation, no back-and-forth.</p>
+        <div class="contactline">
+          <div>Studio · Birmingham, MI</div>
+          <div><a href="mailto:hello@finelinesatelier.com">hello@finelinesatelier.com</a></div>
+          <div><a href="https://instagram.com" target="_blank" rel="noopener">@finelines.atelier</a></div>
+        </div>
+      </div>
+      <div>
+        <div class="cal-wrap">
+          <div class="calendly-inline-widget" data-url="https://calendly.com/aleenaalisaaesthetics" style="min-width:320px;height:700px;"></div>
+        </div>
+        <p class="formnote">Booking powered by Calendly — choose any open slot and you're confirmed instantly.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block">
+    <div class="section-head">
+      <div><div class="eyebrow">GOOD TO KNOW</div><h3>Questions.</h3></div>
+    </div>
+    <div class="faq">
+      <details><summary>How long does it last?<span class="plus">+</span></summary><p>Nanobrows and lip blushing are semi-permanent and typically last one to three years, with a recommended annual touch-up. Fine line tattoos are permanent. Healing, skin type, and sun exposure all affect longevity.</p></details>
+      <details><summary>How much does it cost?<span class="plus">+</span></summary><p>Each service is priced individually, and brow and lip work includes a perfecting touch-up. You'll get a clear quote after your consult, before anything is booked.</p></details>
+      <details><summary>Is it appointment-only?<span class="plus">+</span></summary><p>Yes. We keep the studio calm and unhurried, so every session is by appointment. Request a booking below and we'll find a time.</p></details>
+      <details><summary>What about aftercare?<span class="plus">+</span></summary><p>You'll leave with a printed guide and a direct message line for the full two-week heal. Keep it clean, moisturised, and out of the sun.</p></details>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-word">FINE LINES</div>
+    <div class="foot-grid">
+      <div class="foot-col"><b>Studio</b><div>Birmingham, MI<br>By appointment only</div></div>
+      <div class="foot-col"><b>Contact</b><div><a href="mailto:hello@finelinesatelier.com">hello@finelinesatelier.com</a><br><a href="https://instagram.com" target="_blank" rel="noopener">@finelines.atelier</a></div></div>
+      <div class="foot-col"><b>Explore</b><div><a href="#styles">Styles</a><br><a href="#process">Process</a><br><a href="#work">Work</a></div></div>
+      <div class="foot-col"><b>Book</b><div><a href="#book">Request a session</a><br><a href="#book">Free consult</a></div></div>
+    </div>
+    <div class="copyright">© 2026 Fine Lines Atelier — delicate, permanent, made for you.</div>
+  </footer>
+
+</div>
+
+<script>
+  /* ---- fine-line SVG motif library ---- */
+  const motifs = {
+    face:`<path d="M60 40 C 40 60, 40 120, 62 150 C 70 162, 72 180, 66 196 C 60 214, 74 232, 100 234 C 132 236, 150 214, 150 188 C 150 168, 156 150, 150 120 C 146 96, 148 66, 128 46 C 112 30, 78 26, 60 40 Z"/><path d="M78 92 C 84 86, 96 86, 100 94"/><path d="M118 92 C 124 86, 136 86, 140 96"/><path d="M104 108 C 106 122, 106 132, 98 138 C 94 141, 96 146, 104 146"/><path d="M86 170 C 98 180, 118 180, 130 168"/><circle cx="88" cy="100" r="2.4"/><circle cx="128" cy="100" r="2.4"/>`,
+    rose:`<path d="M100 30 C 118 40, 118 66, 100 74 C 82 66, 82 40, 100 30 Z"/><path d="M100 42 C 110 48, 110 62, 100 68 C 90 62, 90 48, 100 42 Z"/><path d="M100 74 C 130 78, 148 104, 138 134 C 130 158, 100 168, 100 168 C 100 168, 70 158, 62 134 C 52 104, 70 78, 100 74 Z"/><path d="M100 168 C 100 190, 100 210, 100 236"/><path d="M100 196 C 82 190, 68 196, 62 210 C 78 214, 94 208, 100 196 Z"/><path d="M100 210 C 118 204, 132 210, 138 224 C 122 228, 106 222, 100 210 Z"/>`,
+    moth:`<path d="M100 66 C 96 90, 96 150, 100 196"/><path d="M100 72 C 70 40, 30 52, 28 90 C 26 122, 62 132, 100 118"/><path d="M100 72 C 130 40, 170 52, 172 90 C 174 122, 138 132, 100 118"/><path d="M100 120 C 74 118, 46 138, 44 168 C 62 176, 90 166, 100 150"/><path d="M100 120 C 126 118, 154 138, 156 168 C 138 176, 110 166, 100 150"/><path d="M100 66 C 96 54, 90 46, 84 40"/><path d="M100 66 C 104 54, 110 46, 116 40"/><circle cx="60" cy="86" r="6"/><circle cx="140" cy="86" r="6"/>`,
+    snake:`<path d="M78 44 C 60 44, 52 60, 62 74 C 74 90, 124 76, 138 96 C 150 114, 128 130, 96 128 C 60 126, 46 146, 58 166 C 72 188, 132 178, 142 200 C 150 218, 132 232, 110 230"/><path d="M78 44 C 84 38, 96 38, 100 46 C 96 52, 84 52, 78 44 Z"/><circle cx="84" cy="46" r="1.8"/><path d="M100 46 C 108 44, 116 46, 120 50"/>`,
+    hand:`<path d="M70 236 C 66 200, 66 176, 70 150 C 60 140, 52 120, 56 108 C 62 100, 70 108, 76 122 C 76 96, 78 62, 84 50 C 92 42, 98 52, 96 78 C 98 54, 104 40, 112 40 C 120 42, 120 60, 116 84 C 120 62, 128 52, 136 56 C 142 62, 138 82, 132 104 C 140 96, 150 96, 152 106 C 152 124, 140 150, 128 168 C 120 182, 122 210, 122 236"/>`,
+    wave:`<path d="M40 120 C 60 90, 80 90, 100 120 C 120 150, 140 150, 160 120"/><path d="M40 150 C 60 120, 80 120, 100 150 C 120 180, 140 180, 160 150"/><path d="M100 60 C 92 76, 92 92, 100 108 C 108 92, 108 76, 100 60 Z"/><path d="M100 108 C 100 150, 100 190, 100 210"/>`
+  };
+  const heroImgs = ['hero-1.jpg','hero-2.jpg','hero-3.jpg'];
+  const gallerySet = ['rose','moth','snake','hand','wave','face','moth','rose','wave','snake','hand','face'];
+
+  /* tagline word-by-word reveal (matches reference typing-in effect) */
+  (function(){
+    const tag=document.querySelector('.tagline');
+    if(!tag) return;
+    let i=0; const base=1000, step=55;
+    function proc(node){
+      const frag=document.createDocumentFragment();
+      Array.from(node.childNodes).forEach(ch=>{
+        if(ch.nodeType===3){
+          ch.textContent.split(/(\s+)/).forEach(tok=>{
+            if(tok==='') return;
+            if(/^\s+$/.test(tok)){frag.appendChild(document.createTextNode(tok));}
+            else{const s=document.createElement('span');s.className='w';s.style.animationDelay=(base+i*step)+'ms';s.textContent=tok;i++;frag.appendChild(s);}
+          });
+        } else if(ch.nodeType===1){
+          const c=ch.cloneNode(false);
+          c.appendChild(proc(ch));
+          frag.appendChild(c);
+        }
+      });
+      return frag;
+    }
+    const f=proc(tag);
+    tag.innerHTML='';
+    tag.appendChild(f);
+  })();
+
+  // hero image + thumbnails (real studio photos)
+  const heroImg=document.getElementById('heroImg');
+  function setHero(src){
+    const pre=new Image();
+    pre.onload=()=>{heroImg.style.opacity='0';setTimeout(()=>{heroImg.src=src;heroImg.style.opacity='1';},180);};
+    pre.src=src;
+  }
+  const thumbs = document.getElementById('thumbs');
+  heroImgs.forEach((src,i)=>{
+    const b=document.createElement('button');
+    b.className='thumb'+(i===0?' active':'');
+    b.innerHTML=`<img src="${src}" alt="" />`;
+    b.onclick=()=>{document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));b.classList.add('active');setHero(src);};
+    thumbs.appendChild(b);
+  });
+
+  // gallery
+  const gallery=document.getElementById('gallery');
+  gallerySet.forEach(k=>{
+    const d=document.createElement('div');
+    d.className='gtile';
+    d.innerHTML=`<svg viewBox="0 0 200 260">${motifs[k]}</svg>`;
+    gallery.appendChild(d);
+  });
+
+  // style cards
+  const styleData=[
+    {ic:'wave',t:'Nanobrows',d:'Hair-by-hair brow tattooing for soft, natural, fuller-looking brows. Mapped to your face and refined to the perfect shape.'},
+    {ic:'rose',t:'Lip blushing',d:'A semi-permanent tint that restores color, symmetry, and definition — for a healthy, your-lips-but-better finish.'},
+    {ic:'snake',t:'Fine line tattoos',d:'Delicate single-needle tattoos, custom-drawn just for you. Minimal, elegant, and made to age gracefully.'}
+  ];
+  const styleGrid=document.getElementById('styleGrid');
+  styleData.forEach(s=>{
+    const c=document.createElement('div');
+    c.className='style-card';
+    c.innerHTML=`<svg class="ic" viewBox="0 0 200 260">${motifs[s.ic]}</svg><h4>${s.t}</h4><p>${s.d}</p>`;
+    styleGrid.appendChild(c);
+  });
+
+  // marquee
+  const mqText=['NANOBROWS','LIP BLUSHING','FINE LINE TATTOOS','PERMANENT MAKEUP','BIRMINGHAM, MI','BY APPOINTMENT'];
+  const mqHTML=mqText.map(t=>`<span>${t}</span><span class="dot">✦</span>`).join('');
+  document.getElementById('mq').innerHTML=mqHTML+mqHTML;
+
+</script>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</body>
+</html>
