@@ -446,13 +446,27 @@
             <div><label>DATE OF BIRTH</label><input name="date_of_birth" type="date" required /></div>
           </div>
           <div>
+            <label>SERVICE</label>
+            <select name="service" required>
+              <option value="" disabled selected>Select a service</option>
+              <option>Nanobrows</option>
+              <option>Lip blushing</option>
+              <option>Fine line tattoo</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div>
             <label>ADDRESS</label>
             <input name="address" required placeholder="Street, city, state, ZIP" />
           </div>
           <div>
-            <label>PHOTO OF YOUR BROWS</label>
-            <input class="file" name="brow_photo" type="file" accept="image/*" required />
+            <label>PHOTO OF THE AREA</label>
+            <input class="file" name="photo" type="file" accept="image/*" required />
             <p class="filehint">Please upload a well-lit photo in natural lighting (facing a window) of the area to be serviced.</p>
+          </div>
+          <div>
+            <label>NOTES</label>
+            <textarea name="notes" placeholder="Anything you'd like us to know, questions, or inspiration."></textarea>
           </div>
           <button class="submit" type="submit">REQUEST BOOKING</button>
           <p class="formnote">By submitting, you agree to be contacted about your appointment.</p>
