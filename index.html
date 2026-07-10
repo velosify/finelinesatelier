@@ -214,6 +214,7 @@
     background:linear-gradient(150deg,var(--peach1),var(--peach2));transition:.3s}
   .gtile:nth-child(even){background:linear-gradient(150deg,#5e4034,#483026)}
   .gtile:hover{transform:scale(1.03)}
+  .gtile img{width:100%;height:100%;object-fit:cover;display:block}
   .gtile svg{width:56%;height:auto}
   .gtile svg path,.gtile svg circle{stroke:#2a1a10;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
   .gtile:nth-child(even) svg path,.gtile:nth-child(even) svg circle{stroke:#d5cbc1}
@@ -516,7 +517,7 @@
     wave:`<path d="M40 120 C 60 90, 80 90, 100 120 C 120 150, 140 150, 160 120"/><path d="M40 150 C 60 120, 80 120, 100 150 C 120 180, 140 180, 160 150"/><path d="M100 60 C 92 76, 92 92, 100 108 C 108 92, 108 76, 100 60 Z"/><path d="M100 108 C 100 150, 100 190, 100 210"/>`
   };
   const heroImgs = ['hero-1.jpg','hero-2.jpg','hero-3.jpg'];
-  const gallerySet = ['rose','moth','snake','hand','wave','face'];
+  const gallerySet = ['work-1.jpg','work-2.jpg','work-3.jpg','work-4.jpg','work-5.jpg','work-6.jpg'];
 
   /* tagline word-by-word reveal (matches reference typing-in effect) */
   (function(){
@@ -563,10 +564,10 @@
 
   // gallery
   const gallery=document.getElementById('gallery');
-  gallerySet.forEach(k=>{
+  gallerySet.forEach(src=>{
     const d=document.createElement('div');
     d.className='gtile';
-    d.innerHTML=`<svg viewBox="0 0 200 260">${motifs[k]}</svg>`;
+    d.innerHTML=`<img src="${src}" alt="Fine Lines Atelier work" loading="lazy" />`;
     gallery.appendChild(d);
   });
 
