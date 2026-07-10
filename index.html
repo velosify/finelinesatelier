@@ -80,6 +80,7 @@
   }
   .wordmark .wl{display:block}
   .wordmark .wl.sub{font-size:.42em;letter-spacing:.05em;font-weight:300;margin-top:.12em}
+  .hero-logo{width:min(62%,330px);height:auto;display:block;margin-top:clamp(0px,1vw,8px)}
   .tagline{
     max-width:32ch;margin-top:22px;
     font-weight:600;letter-spacing:.02em;line-height:1.5;
@@ -287,6 +288,8 @@
     .wordmark .wl:nth-child(1){animation-delay:.5s}
     .wordmark .wl:nth-child(2){animation-delay:.66s}
     .wordmark .wl:nth-child(3){animation-delay:.82s}
+    .hero-logo{opacity:0;transform:translateY(26px);filter:blur(6px);
+      animation:wordmarkIn 1s cubic-bezier(.16,1,.3,1) .5s forwards}
 
     .tagline .w{display:inline-block;opacity:0;transform:translateY(9px);
       animation:wordIn .5s ease forwards}
@@ -338,7 +341,8 @@
   <!-- HERO CARD -->
   <div class="card anim-card">
     <div class="left">
-      <div class="wordmark"><span class="wl">FINE</span><span class="wl">LINES</span><span class="wl sub">ATELIER</span></div>
+      <img class="hero-logo" src="logo-white.png" alt="Fine Lines Atelier" />
+      <div class="tagline">Nanobrows, lip blushing &amp; fine line tattoos — <span class="mut">delicate, natural, and made just for you. Booking now in Birmingham, MI.</span></div>
       <nav class="styles-list" id="styles-quick">
         <a href="#styles"><span>NANOBROWS</span><span class="num">01</span></a>
         <a href="#styles"><span>LIP BLUSHING</span><span class="num">02</span></a>

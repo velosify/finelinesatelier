@@ -10,3 +10,7 @@ Instagram_files/
 *.log
 .vscode/
 .idea/
+
+# scratch / originals not used by the site
+_preview_del.jpg
+ChatGPT Image*.jpg
