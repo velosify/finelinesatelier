@@ -231,8 +231,17 @@
     padding:16px;font-weight:600;letter-spacing:.14em;font-size:12px;cursor:pointer;transition:.25s;font-family:inherit;
   }
   .submit:hover{background:var(--peach2)}
-  .cal-wrap{background:#fff;border-radius:16px;overflow:hidden}
-  .formnote{font-size:11px;color:#77777c;line-height:1.6;margin-top:12px;text-align:center}
+  input[type=file].file{padding:11px 14px;font-size:13px;color:#cfcfd4;cursor:pointer}
+  input[type=file].file::file-selector-button{
+    margin-right:12px;background:#26262a;border:1px solid #3a3a3e;color:#fff;border-radius:8px;
+    padding:8px 14px;font-family:inherit;font-size:11px;letter-spacing:.08em;cursor:pointer;transition:.2s;
+  }
+  input[type=file].file::file-selector-button:hover{background:#33333a}
+  .filehint{font-size:11px;color:#77777c;margin-top:8px;line-height:1.5}
+  .formnote{font-size:11px;color:#77777c;line-height:1.6;margin-top:4px}
+  .errmsg{display:none;background:#2a1515;border:1px solid #5a2f2f;color:#f0c9c9;
+    border-radius:12px;padding:14px;font-size:13px;line-height:1.6}
+  .errmsg.show{display:block}
   .success{display:none;background:#15251a;border:1px solid #2f5a3d;color:#c9f0d4;
     border-radius:12px;padding:14px;font-size:13px;line-height:1.6}
   .success.show{display:block}
@@ -405,7 +414,7 @@
     <div class="book-card">
       <div>
         <h3>Book your session.</h3>
-        <p class="lede">Pick a time below to book your appointment or a free consult — you'll get an instant confirmation, no back-and-forth.</p>
+        <p class="lede">Fill in your details and upload a quick photo of your brows. We'll review and reach out to confirm your appointment.</p>
         <div class="contactline">
           <div>Studio · Birmingham, MI</div>
           <div><a href="mailto:hello@finelinesatelier.com">hello@finelinesatelier.com</a></div>
@@ -413,10 +422,34 @@
         </div>
       </div>
       <div>
-        <div class="cal-wrap">
-          <div class="calendly-inline-widget" data-url="https://calendly.com/aleenaalisaaesthetics" style="min-width:320px;height:700px;"></div>
-        </div>
-        <p class="formnote">Booking powered by Calendly — choose any open slot and you're confirmed instantly.</p>
+        <form id="intake" enctype="multipart/form-data">
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+          <input type="hidden" name="subject" value="New booking request — Fine Lines Atelier" />
+          <input type="hidden" name="from_name" value="Fine Lines Atelier Website" />
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+          <div class="f-row">
+            <div><label>NAME</label><input name="name" required placeholder="Full name" /></div>
+            <div><label>PHONE</label><input name="phone" type="tel" required placeholder="(555) 555-5555" /></div>
+          </div>
+          <div class="f-row">
+            <div><label>EMAIL</label><input name="email" type="email" required placeholder="you@email.com" /></div>
+            <div><label>DATE OF BIRTH</label><input name="date_of_birth" type="date" required /></div>
+          </div>
+          <div>
+            <label>ADDRESS</label>
+            <input name="address" required placeholder="Street, city, state, ZIP" />
+          </div>
+          <div>
+            <label>PHOTO OF YOUR BROWS</label>
+            <input class="file" name="brow_photo" type="file" accept="image/*" required />
+            <p class="filehint">A clear, makeup-free photo helps us prep for your appointment.</p>
+          </div>
+          <button class="submit" type="submit">REQUEST BOOKING</button>
+          <p class="formnote">By submitting, you agree to be contacted about your appointment.</p>
+          <div class="success" id="ok">Thanks! Your request is in — we'll text or email you shortly to confirm.</div>
+          <div class="errmsg" id="err"></div>
+        </form>
       </div>
     </div>
   </section>
@@ -532,7 +565,28 @@
   const mqHTML=mqText.map(t=>`<span>${t}</span><span class="dot">✦</span>`).join('');
   document.getElementById('mq').innerHTML=mqHTML+mqHTML;
 
+  // booking intake form -> Web3Forms (handles the brow photo upload)
+  const intake=document.getElementById('intake');
+  if(intake){
+    intake.addEventListener('submit',async function(e){
+      e.preventDefault();
+      const btn=intake.querySelector('.submit');
+      const ok=document.getElementById('ok');
+      const err=document.getElementById('err');
+      ok.classList.remove('show'); err.classList.remove('show');
+      const label=btn.textContent;
+      btn.textContent='SENDING…'; btn.disabled=true;
+      try{
+        const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(intake)});
+        const data=await res.json();
+        if(data.success){ intake.reset(); ok.classList.add('show'); btn.textContent='REQUEST SENT'; }
+        else{ throw new Error(data.message||'error'); }
+      }catch(ex){
+        err.textContent='Sorry — that didn’t send. Please try again, or email us directly.';
+        err.classList.add('show'); btn.textContent=label; btn.disabled=false;
+      }
+    });
+  }
 </script>
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
