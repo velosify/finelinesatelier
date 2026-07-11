@@ -14,3 +14,9 @@ Instagram_files/
 # scratch / originals not used by the site
 _preview_del.jpg
 ChatGPT Image*.jpg
+IMG_*.jpeg
+IMG_*.JPEG
+A3618CE1-*.JPEG
+
+# deploy build output
+dist/
